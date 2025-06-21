@@ -1,0 +1,86 @@
+schema
+mongoDB schema 
+user-	1:username
+	2:email
+	3:password
+	4:gender
+
+workout-
+	1:nameofexercise
+	2:body_part
+	3:numofExcercise
+	4:sets
+	5:reps
+	6:weight
+
+db.js explanation
+firstly imported mongoose for idk 
+imported dotenv for secret token and uri 
+dotenv.config()idk
+
+then const connectDB value assign kri hai usme async function use kia uske andar try lagaya why cuz baad mein await use kr paye taki jo database hai usko aane mein time lagta hai isliye async await use hota hai toh try ke andar ek aur const declare kia usme await karaya mongoose.connect ko fir woh process.env.URI walah samaj nhi aaya and then woh newuriparser and topology woh bhi samaj nhi aaya kyu lagaaya hai fir consolelog kr dia connected ke liye aur fir catch lagaya agar error aaya toh nhi connect ka log kia fir last mein export default connect db mein sirf woh connectDB wala function export kia taki idk which file mein import kar paye
+
+server.js
+isme import karaya express idk y
+dotenv personal details ke liye 
+connectDB wala function db file mein se 
+dot.env config samaj nhi aaya kyu kia 
+
+constapp = express() ye shayad express ka function banaya idk why 
+aur fir middleware wala bhi samaj nhi aaya 
+last mein listen kia server ko uska port wgera log krwaya haina 
+
+workout.js 
+isme bas workout structure kia hai 
+(schema later daal dunga)
+
+
+[✅ Step 1] Project folder, env, dependencies setup
+[✅ Step 2] MongoDB connection
+[✅ Step 3] Express server setup
+[✅ Step 4] User schema created
+[✅ Step 5] Register route connected
+[🔄 Step 6] Implement registerUser logic
+[⏳ Step 7] Create loginUser
+
+
+
+postman user credentials
+{
+  "username": "pratham",
+  "email": "pratham@gmail.com",
+  "password": "12345678",
+  "gender": "male"
+}
+
+register logic done and login logic done
+
+
+
+JWT middleware file (baad mein logic wgera likh lunga)
+
+seed/exercises.js
+we will construct a new schema of pre existing exercises like 
+ pushup schema {
+	type: string
+	description:string
+	category: string;
+	musclegroup: string;
+} 
+same with pull ups and squats
+but I get It its like the exercise schema we used in models/exercise schema
+in that user will also write its exercise itself 
+and if we have to provide him/her the pre existing exercise fir toh bhot sari exercise hai jo pre existing hai toh isliye mujhe seeding ka samaj nhi aaya
+SEEDING - just to provide a new user some pre existing data like a drop down 
+now ill build the exercise.js
+done
+seeder.js
+done ill explain it later
+now exerciseRoutes.js file in routes
+to show the existing exercises for users
+
+
+
+
+
+
