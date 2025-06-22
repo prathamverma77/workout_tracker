@@ -24,7 +24,18 @@ app.use("/api/test", testProtcted);
 //connectto DB
 connectDB();
 
-
+//main routes for deployed link
+app.get('/', (req, res) => {
+  res.json({ 
+    message: "Workout Tracker API is running!",
+    endpoints: [
+      "GET /api/workouts",
+      "POST /api/workouts", 
+      "POST /api/auth/register",
+      "POST /api/auth/login"
+    ]
+  });
+});
 //Routes
 //exercise routes from seeder.js for existing exercise for users
 app.use("/api/exercises", exerciseRoutes);
@@ -42,14 +53,3 @@ app.listen(PORT, () =>
     console.log(`Server running on http:localhost:${PORT}`)
 );
 
-app.get('/', (req, res) => {
-  res.json({ 
-    message: "Workout Tracker API is running!",
-    endpoints: [
-      "GET /api/workouts",
-      "POST /api/workouts", 
-      "POST /api/auth/register",
-      "POST /api/auth/login"
-    ]
-  });
-});
