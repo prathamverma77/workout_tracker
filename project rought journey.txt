@@ -188,8 +188,47 @@ postman user credentials
 }
 
 token (expires in 7d)
-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NTdhZTMwNTNhMDg5YzhhOTdmMDc0ZiIsImlhdCI6MTc1MDU3NjcyOSwiZXhwIjoxNzUwNTgwMzI5fQ.ZwAWuQNmmtc4qHR2maT_P6BPFVZDM2fCPY8c8hukQNk
-
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NTdhZTMwNTNhMDg5YzhhOTdmMDc0ZiIsImlhdCI6MTc1MDU5NjA4MywiZXhwIjoxNzUwNTk5NjgzfQ.EDF1Ea-7eIqVLilLeUI0C0CL8BDg8VqZ_WH6UUL4ZV8
 current workout id
 6857ae9953a089c8a97f0752
+CRUD OPERATIONS COMPLETE
+
+
+NOW TAKING PROJECT TO INTERMIDIATE LEVEL
+
+
+        PROGRESS TRACKING
+
+It builds directly on your existing workouts.
+Adds value to the user (they can track strength over time).
+Uses MongoDB aggregation, which is resume-worthy.
+You can show progress per exercise like:
+"You increased your squat from 40kg to 60kg in 3 weeks."
+
+
+pseudo logic for progressController.js
+phele user ID lenge req.user se (middleware ka token use hoga)
+fir exercise name lenge req.params se
+search krnege workout collection se 
+  workout by this user 
+  isme kam se kam ek exercise toh matching honi              chaiye exercise name se
+
+mongo db aggregation use krnege (imp part)
+match krnege user aur exercise name
+unwind the exercise array (ye walah samaj nhi aaya )
+filter
+project fields
+sort krnege date ascending
+return kr denge list of records showing progress over time
+
+
+pushup id
+685683e469767fd704100474
+
+
+
+
+
+
+
 

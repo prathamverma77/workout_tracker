@@ -5,6 +5,7 @@ import authRoutes from "./routes/authRoutes.js";
 import testProtcted from "./routes/testProtected.js";
 import exerciseRoutes from "./routes/exerciseRoutes.js";
 import workoutRoutes from "./routes/workoutRoutes.js";
+import progressRoutes from "./routes/progressRoutes.js";
 
 dotenv.config();
 
@@ -29,6 +30,8 @@ connectDB();
 app.use("/api/exercises", exerciseRoutes);
 //workout.js from routes
 app.use("/api/workouts", workoutRoutes);
+//progress Routes 
+app.use("/api/progress", progressRoutes);
 
 app.get("/", (req, res) => {
   res.send("API is running...");
@@ -38,3 +41,4 @@ app.get("/", (req, res) => {
 app.listen(PORT, () =>
     console.log(`Server running on http:localhost:${PORT}`)
 );
+

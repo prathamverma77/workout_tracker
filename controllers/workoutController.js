@@ -1,4 +1,6 @@
-import Workout from "../models/Workout.js"
+import Workout from "../models/Workout.js";
+import Exercise from "../models/Exercise.js";
+
 
 export const createWorkout = async (req, res) =>{
     try {
@@ -8,6 +10,18 @@ export const createWorkout = async (req, res) =>{
         if (!exercises || exercises.length ===0) {
             return res.status(400).json({message:"Exercises are required"});
         }
+
+         const populatedExercises = [];
+
+    for (const item of exercises) {
+      const foundExercise = await Exercise.findById(item.exercise);
+      if (!foundExercise) continue; // skip invalid ones
+
+      populatedExercises.push({
+        ...item,
+        exerciseName: foundExercise.name, // ✅ add this
+      });
+    }
 
         const newWorkout = new Workout({
             user: userId,
