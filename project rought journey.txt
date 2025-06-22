@@ -45,13 +45,6 @@ isme bas workout structure kia hai
 
 
 
-postman user credentials
-{
-  "username": "pratham",
-  "email": "pratham@gmail.com",
-  "password": "12345678",
-  "gender": "male"
-}
 
 register logic done and login logic done
 
@@ -137,8 +130,7 @@ validate krenge required data
 construct krenge aur save krnege workout ko
 then return the response
 
-token (expires in 7d)
-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NTY1NjkwNzBhZDFjNjA1ZDhiYzY3OCIsImlhdCI6MTc1MDU2NzcwNSwiZXhwIjoxNzUwNTcxMzA1fQ.nQNsCk1LDq3chF8AIcKE0eMY1ir2WSQZmO0n3x4vy-k
+
 
 created the workout in postman
 http://localhost:5000/api/workouts
@@ -184,4 +176,20 @@ Extract id from req.params.
 Use Workout.findByIdAndDelete(id)
 
 Return success message.
+
+
+
+postman user credentials
+{
+  "username": "pratham",
+  "email": "pratham@example.com",
+  "password": "password123",
+  "gender": "male"
+}
+
+token (expires in 7d)
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NTdhZTMwNTNhMDg5YzhhOTdmMDc0ZiIsImlhdCI6MTc1MDU3NjcyOSwiZXhwIjoxNzUwNTgwMzI5fQ.ZwAWuQNmmtc4qHR2maT_P6BPFVZDM2fCPY8c8hukQNk
+
+current workout id
+6857ae9953a089c8a97f0752
 

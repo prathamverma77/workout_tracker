@@ -47,3 +47,65 @@ export const getWorkouts = async(req, res) => {
         });
     }
 };
+
+// find a specifc workout by id 
+export const getWorkoutById = async (req, res)  => {
+    try {
+        const workoutId = req.params.id;
+
+        const workout = await Workout.findById(workoutId);
+
+        if (!workout) {
+            return res.status(404).json({messge:"Workout not found"});
+        }
+        res.status(200).json({
+            message:"workout fetched successfully",
+            workout,
+        });
+    }catch (error) {
+        res.status(500).json({message: "server error",error: error.message});
+    }
+};
+
+//update the workout details like (exercises, date, notes)
+export const updateWorkout = async (req, res) => {
+    try {
+        const workoutId = req.params.id;
+        const userId = req.user.id;
+        const {exercises, date, notes} = req.body;
+
+        const workout = await Workout.findOne({_id: workoutId, user:userId});
+
+        if (!workout) {
+            return res.status(404).json({message:"Workout not found"});
+        }
+
+        //update fields
+        if (exercises) workout.exercises  = exercises;
+        if (date) workout.date = date;
+        if (notes) workout.notes = notes;
+
+        await workout.save();
+        res.status(200).json({message: "Workout updated", workout});
+
+    }catch(error) {
+        res.status(500).json({message:"server error", error:error.message});
+    }
+};
+
+// controllers/workoutController.js
+export const deleteWorkout = async (req, res) => {
+    try {
+        const workoutId = req.params.id;
+        const userId = req.user.id;
+
+        const workout = await Workout.findOneAndDelete({_id:workoutId,user:userId});
+
+        if(!workout) {
+            return res.status(404).json({message:"workout not found or already deleted"});
+        }
+        res.status(200).json({message:"wokout deleted successfully"});
+    }catch (error) {
+        res.status(500).json({messasge:"server error", error:error.message});
+    }
+};

@@ -12,7 +12,7 @@ const workoutSchema = new mongoose.Schema(
             type: Date,
             default: Date.now,
         },
-        excersises:[
+        exercises:[
             {
                 exercise:{
                     type:mongoose.Schema.Types.ObjectId,
