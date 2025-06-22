@@ -42,3 +42,14 @@ app.listen(PORT, () =>
     console.log(`Server running on http:localhost:${PORT}`)
 );
 
+app.get('/', (req, res) => {
+  res.json({ 
+    message: "Workout Tracker API is running!",
+    endpoints: [
+      "GET /api/workouts",
+      "POST /api/workouts", 
+      "POST /api/auth/register",
+      "POST /api/auth/login"
+    ]
+  });
+});
