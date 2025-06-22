@@ -79,8 +79,109 @@ done ill explain it later
 now exerciseRoutes.js file in routes
 to show the existing exercises for users
 
+summary so far
+👤 User Authentication
+✅ Register Route
+
+Validates input
+
+Hashes password
+
+Creates user in MongoDB
+
+Generates and returns JWT token
+
+✅ Login Route
+
+Validates email & password
+
+Compares hashed password
+
+Returns JWT token on success
+
+🔐 Protected Routes
+Created verifyToken.js middleware
+
+Protected routes only accessible with valid JWT token
+
+🏋️ Exercises
+Created Exercise schema
+
+Made seed/exercises.js with predefined exercises
+
+Built a seeder.js script to insert them into MongoDB
+
+Tested in Postman → working perfectly
+
+🧠 Workout Schema (In Progress)
+Created schema linking User + Exercise
+
+Used ObjectId refs for proper relations
+
+Structuring ready for adding workouts later
+
+🌐 GitHub Setup
+Repo created and pushed successfully ✅
+
+.env is ignored (✅)
+
+Files are structured cleanly on GitHub
 
 
+now made a workoutroutes.js crud operations
+
+now moving to controllerworkout.js (logic)
+workout data extract krenge req.body ke through
+userID from token 
+validate krenge required data 
+construct krenge aur save krnege workout ko
+then return the response
+
+token (expires in 7d)
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NTY1NjkwNzBhZDFjNjA1ZDhiYzY3OCIsImlhdCI6MTc1MDU2NzcwNSwiZXhwIjoxNzUwNTcxMzA1fQ.nQNsCk1LDq3chF8AIcKE0eMY1ir2WSQZmO0n3x4vy-k
+
+created the workout in postman
+http://localhost:5000/api/workouts
+
+          controllers/workoutController.js
+work to do in here
+ 
+only logged in user can access
+its should return only their own workouts 
+each workout includes the exercises date and notes
+
+basic logic
+extract the user.id from JWT token req.user.id
+query of workout model 
+sort the workouts by the date or creation time
+u can also show exercise names 
+
+so in this folder later now CRUD operations 
+get workout by id
+update workout
+and delete it
+logic basically
+getworkout method get
+logic
+extract id from req.params 
+use workout.findbyid to fetch the workout
+not found return 404
+return workout return 404
 
 
+update workout method put
+logic 
+Get id from req.params, get fields from req.body.
+
+Use Workout.findByIdAndUpdate(id, updatedData, { new: true })
+
+Return updated workout.
+
+delete workout method delete
+logic
+Extract id from req.params.
+
+Use Workout.findByIdAndDelete(id)
+
+Return success message.
 

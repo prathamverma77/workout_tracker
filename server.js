@@ -4,6 +4,7 @@ import connectDB from "./config/db.js";
 import authRoutes from "./routes/authRoutes.js";
 import testProtcted from "./routes/testProtected.js";
 import exerciseRoutes from "./routes/exerciseRoutes.js";
+import workoutRoutes from "./routes/workoutRoutes.js";
 
 dotenv.config();
 
@@ -26,6 +27,8 @@ connectDB();
 //Routes
 //exercise routes from seeder.js for existing exercise for users
 app.use("/api/exercises", exerciseRoutes);
+//workout.js from routes
+app.use("/api/workouts", workoutRoutes);
 
 app.get("/", (req, res) => {
   res.send("API is running...");
