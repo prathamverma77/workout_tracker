@@ -24,15 +24,20 @@ app.use("/api/test", testProtcted);
 //connectto DB
 connectDB();
 
-//main routes for deployed link
-app.get('/', (req, res) => {
-  res.json({ 
+// Unified root route with full API listing
+app.get("/", (req, res) => {
+  res.json({
     message: "Workout Tracker API is running!",
     endpoints: [
-      "GET /api/workouts",
-      "POST /api/workouts", 
       "POST /api/auth/register",
-      "POST /api/auth/login"
+      "POST /api/auth/login",
+      "GET /api/exercises",
+      "POST /api/workouts",
+      "GET /api/workouts",
+      "GET /api/workouts/:id",
+      "PUT /api/workouts/:id",
+      "DELETE /api/workouts/:id",
+      "GET /api/progress/:exerciseName"
     ]
   });
 });
@@ -44,12 +49,13 @@ app.use("/api/workouts", workoutRoutes);
 //progress Routes 
 app.use("/api/progress", progressRoutes);
 
-app.get("/", (req, res) => {
-  res.send("API is running...");
-});
 
 //listening uri
 app.listen(PORT, () =>
     console.log(`Server running on http:localhost:${PORT}`)
 );
 
+// 404 route handler for unmatched endpoints
+app.use((req, res) => {
+  res.status(404).json({ message: "Route not found" });
+});
