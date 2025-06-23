@@ -29,7 +29,7 @@ A fitness workout tracking REST API built using Node.js, Express, and MongoDB. I
 - Delete Workout: `DELETE /api/workouts/:id`
 - Track Progress: `GET /api/progress/:exerciseName`
 
-## 📂 Project Structure
+## Project Structure
 ├── controllers/
 ├── models/
 ├── routes/
