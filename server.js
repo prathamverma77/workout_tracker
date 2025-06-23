@@ -17,7 +17,7 @@ const app = express();
 
 //middleware
 app.use(express.json());
-app.use("/api/auth", authRoutes); // ✅ mount the route
+app.use("/api/auth", authRoutes); // mount the route
 app.use("/api/test", testProtcted);
 
 

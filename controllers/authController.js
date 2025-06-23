@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 import User from "../models/User.js";
 
 export const registerUser = async (req, res) => {
-    //(this was giving error)res.status(200).json({message:"register route working"});
+    
   try {
     const { username, email, password, gender } = req.body;
 
@@ -70,7 +70,7 @@ export const loginUser = async (req,res) => {
                 message:"Invalid email or password"
             })
 
-            //let options  (idk what this and why is this)
+            
         };
         const token = jwt.sign(
             { id:user._id },

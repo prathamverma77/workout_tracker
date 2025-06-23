@@ -15,11 +15,11 @@ export const createWorkout = async (req, res) =>{
 
     for (const item of exercises) {
       const foundExercise = await Exercise.findById(item.exercise);
-      if (!foundExercise) continue; // skip invalid ones
+      if (!foundExercise) continue; 
 
       populatedExercises.push({
         ...item,
-        exerciseName: foundExercise.name, // ✅ add this
+        exerciseName: foundExercise.name, 
       });
     }
 
