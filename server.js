@@ -6,6 +6,8 @@ import testProtcted from "./routes/testProtected.js";
 import exerciseRoutes from "./routes/exerciseRoutes.js";
 import workoutRoutes from "./routes/workoutRoutes.js";
 import progressRoutes from "./routes/progressRoutes.js";
+import Exercise from "./models/Exercise.js";
+import Workout from "./models/Workout.js";
 
 dotenv.config();
 
