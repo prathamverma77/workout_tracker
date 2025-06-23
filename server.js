@@ -20,7 +20,47 @@ app.use(express.json());
 app.use("/api/auth", authRoutes); // mount the route
 app.use("/api/test", testProtcted);
 
+// Debug routes - add these temporarily
+app.get('/debug/all-exercises', async (req, res) => {
+  try {
+    const exercises = await Exercise.find();
+    res.json({ count: exercises.length, exercises });
+  } catch (error) {
+    res.json({ error: error.message });
+  }
+});
 
+app.get('/debug/my-workouts', async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const workouts = await Workout.find({ user: userId });
+    res.json({ 
+      userId,
+      count: workouts.length, 
+      workouts 
+    });
+  } catch (error) {
+    res.json({ error: error.message });
+  }
+});
+
+app.get('/debug/raw-data', async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const exercises = await Exercise.find();
+    const workouts = await Workout.find({ user: userId });
+    
+    res.json({
+      userId,
+      exerciseCount: exercises.length,
+      workoutCount: workouts.length,
+      exercises,
+      workouts
+    });
+  } catch (error) {
+    res.json({ error: error.message });
+  }
+});
 //connectto DB
 connectDB();
 

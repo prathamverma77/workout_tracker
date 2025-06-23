@@ -2,42 +2,42 @@ import Workout from "../models/Workout.js";
 import Exercise from "../models/Exercise.js";
 
 
-export const createWorkout = async (req, res) =>{
+export const createWorkout = async (req, res) => {
     try {
         const {exercises, date, notes} = req.body;
         const userId = req.user.id;
 
-        if (!exercises || exercises.length ===0) {
-            return res.status(400).json({message:"Exercises are required"});
+        if (!exercises || exercises.length === 0) {
+            return res.status(400).json({message: "Exercises are required"});
         }
 
-         const populatedExercises = [];
-
-    for (const item of exercises) {
-      const foundExercise = await Exercise.findById(item.exercise);
-      if (!foundExercise) continue; 
-
-      populatedExercises.push({
-        ...item,
-        exerciseName: foundExercise.name, 
-      });
-    }
+        // Validate all exercises exist
+        const populatedExercises = [];
+        for (const item of exercises) {
+            const foundExercise = await Exercise.findById(item.exercise);
+            if (!foundExercise) {
+                return res.status(400).json({
+                    message: `Exercise with ID ${item.exercise} not found`
+                });
+            }
+            populatedExercises.push(item);
+        }
 
         const newWorkout = new Workout({
             user: userId,
-            exercises,
+            exercises: populatedExercises,  
             date,
             notes,
         });
-        await newWorkout.save();
 
+        await newWorkout.save();
         res.status(201).json({
-            message:"Workout created",
-            workout:newWorkout,
+            message: "Workout created",
+            workout: newWorkout,
         });
-    }catch (error) {
+    } catch (error) {
         console.error("Error creating workout", error);
-        res.status(500).json({message:"Server error", error:error.message});
+        res.status(500).json({message: "Server error", error: error.message});
     }
 };
 
