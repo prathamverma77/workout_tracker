@@ -1,6 +1,9 @@
 # workout_tracker
 A fitness workout tracking REST API built using Node.js, Express, and MongoDB. It allows users to register, log workouts, track exercise progress, and manage workout data.
 
+## Project URL
+- https://workout-tracker-backend-xzdb.onrender.com
+
 ## features
 - User Authentication (JWT-based)
 - CRUD operations on workouts
